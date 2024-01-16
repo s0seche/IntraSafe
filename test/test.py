@@ -1,16 +1,17 @@
-from action.option1.scan import option1_main
-from action.option2.vuln_detection import option2_main
-from action.option3.pwd_secure import option3_main
-from action.option4.connectivity import option4_main
-from action.option5.exploit_vuln import option5_main
-from action.option6.data_detection import option6_main
-from action.option7.reporting import option7_main
-from configuration.conf import lire_informations,creer_fichier,fichier_texte,chemin_fichier_json
+#Pas sûr de l'utilité. Barre de chargement pour init tous les fichiers.
+# A voir avec le temps...
 
+import os
+import time
+import progressbar
 
-#INIT conf file
-informations = lire_informations(fichier_texte)
-creer_fichier(informations, chemin_fichier_json)
+from pouet.option1.scan import option1_main
+from pouet.option2.vuln_detection import option2_main
+from pouet.option3.pwd_secure import option3_main
+from pouet.option4.connectivity import option4_main
+from pouet.option5.exploit_vuln import option5_main
+from pouet.option6.data_detection import option6_main
+from pouet.option7.reporting import option7_main
 
 def print_logo():
     print("\033[1;35;40m")
@@ -52,7 +53,21 @@ def get_choice():
         except ValueError:
             print("\033[1;31;40mVeuillez entrer un nombre valide.")
 
+def loading_bar():
+    widgets = [
+        ' [', progressbar.Percentage(), '] ',
+        progressbar.Bar(marker='=', left='[', right=']'),
+    ]
+    bar = progressbar.ProgressBar(widgets=widgets, max_value=50).start()
+
+    for i in range(30):
+        time.sleep(0.1)
+        bar.update(i + 1)
+
+    bar.finish()
+
 def main():
+    loading_bar()
     while True:
         print_logo()
         print_menu()
@@ -78,7 +93,7 @@ def main():
             option6_main()
         elif choice == 7:
             print("\033[1;34;40mVous avez choisi l'option 7.")
-            option7_main()
+            option7_main
         elif choice == 8:
             print("\033[1;31;40mAu revoir ;)!")
             break
