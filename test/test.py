@@ -1,5 +1,5 @@
-#Pas sûr de l'utilité. Barre de chargement pour init tous les fichiers.
-# A voir avec le temps...
+# Barre de chargement pour init tous les fichiers.
+# A valider
 
 import os
 import time

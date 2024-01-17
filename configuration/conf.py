@@ -17,6 +17,3 @@ def creer_fichier(informations, chemin_fichier_json):
 fichier_texte = 'configuration.txt'
 chemin_fichier_json = 'configuration/conf.json'
 
-
-#test
-#print(f'Le fichier JSON "{chemin_fichier_json}" a été créé avec succès.')
