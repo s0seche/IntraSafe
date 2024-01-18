@@ -1,6 +1,6 @@
 from action.option1.scan import option1_main
 from action.option2.vuln_detection import option2_main
-from action.option3.pwd_secure import option3_main
+from action.option3.pwd_secure import lire_fichier_ods
 from action.option4.connectivity import option4_main
 from action.option5.exploit_vuln import option5_main
 from action.option6.data_detection import option6_main
@@ -66,7 +66,8 @@ def main():
             option2_main()
         elif choice == 3:
             print("\033[1;34;40mVous avez choisi l'option 3.")
-            option3_main()
+            emplacement_fichier = input("Veuillez entrer le chemin complet du fichier .ods : ")
+            lire_fichier_ods(emplacement_fichier)
         elif choice == 4:
             print("\033[1;34;40mVous avez choisi l'option 4.")
             option4_main()
