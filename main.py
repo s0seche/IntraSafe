@@ -1,4 +1,4 @@
-from action.option1.scan import option1_main
+from action.option1.main_option1 import option1_main
 from action.option2.vuln_detection import option2_main
 from action.option3.main_option3 import option3_main
 from action.option4.connectivity import option4_main
@@ -6,6 +6,7 @@ from action.option5.exploit_vuln import option5_main
 from action.option6.data_detection import option6_main
 from action.option7.reporting import option7_main
 from configuration.conf import lire_informations,creer_fichier,fichier_texte,chemin_fichier_json
+
 
 
 #INIT conf file

@@ -6,4 +6,4 @@ Ville:changeme
 Age:changeme
 
 Pour les scans de vulnérabilités veuillez rentrer l'ip choisi
-IP:changeme
+IP:127.0.0.1

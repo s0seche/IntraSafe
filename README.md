@@ -14,7 +14,8 @@ L' objectif principal de cette boîte à outils est d'automatiser les tests de s
    - Analysez les vulnérabilités présentes et recevez des recommandations pour les corriger.
 
 3. **Analyse de la sécurité des mots de passe fournis** 🔐
-   - Évaluez la robustesse des mots de passe fournis pour renforcer la sécurité.
+   - Évaluez la robustesse des mots de passe fournis pour renforcer la sécurité. 
+   A partir de données sur excel ou keepass
 
 4. **Tests d'authentification d'identifiants fournis** 🤖
    - Effectuez des tests d'authentification pour évaluer la résistance des identifiants fournis.
