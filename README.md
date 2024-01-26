@@ -15,7 +15,7 @@ L' objectif principal de cette boîte à outils est d'automatiser les tests de s
 
 3. **Analyse de la sécurité des mots de passe fournis** 🔐
    - Évaluez la robustesse des mots de passe fournis pour renforcer la sécurité. 
-   A partir de données sur excel ou keepass
+        - A partir de données sur excel ou keepass
 
 4. **Tests d'authentification d'identifiants fournis** 🤖
    - Effectuez des tests d'authentification pour évaluer la résistance des identifiants fournis.
@@ -32,3 +32,15 @@ L' objectif principal de cette boîte à outils est d'automatiser les tests de s
 ## Configuration
 
 Avant de commencer, veuillez insérer vos informations de configuration dans le fichier "configuration.txt". Cela garantira une utilisation correcte et personnalisée de la boîte à outils.
+
+## Configuration
+
+```bash
+git clone https://github.com/s0seche/IntraSafe.git
+```
+```bash
+pip install -r requirements.txt
+```
+
+`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "configuration.txt". Cela améliorera votre experience utilisateur de IntraSafe
+
