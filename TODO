@@ -1,10 +1,9 @@
 fonctions 3
-	intégrer txt ? 
 	comparer avec les champs perso 
 	comparer dans des wordlist ? 
-fonction 1
-	ajouter option -p-
-	ajouter option --script=vuln ?
+				problème taille ?
+
+
 Definir les outils que on va utiliser pour chaque étape
 Définir l'archi retenue que on va utiliser pour chaque étape
 Création des fonctions pour chaque étape
