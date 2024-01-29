@@ -2,3 +2,5 @@ progressbar2
 openpyxl
 pykeepass
 python-nmap
+Flask
+matplotlib

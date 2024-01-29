@@ -5,8 +5,8 @@ from action.option1.scan import get_ip_from_json
 def option1_main():
     choix = 'y'
     while choix.lower() == 'y' or choix == 'yes':
-        
-        target = get_ip_from_json('conf.json')
+        json_file_path = 'configuration/conf.json'
+        target = get_ip_from_json(json_file_path)
         if target:
             nmap_scan_common(target)
         else:

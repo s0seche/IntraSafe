@@ -4,7 +4,7 @@ from action.option3.main_option3 import option3_main
 from action.option4.connectivity import option4_main
 from action.option5.exploit_vuln import option5_main
 from action.option6.data_detection import option6_main
-from action.option7.reporting import option7_main
+from action.option7.reporting import main_option7
 from configuration.conf import lire_informations,creer_fichier,fichier_texte,chemin_fichier_json
 
 
@@ -79,7 +79,7 @@ def main():
             option6_main()
         elif choice == 7:
             print("\033[1;34;40mVous avez choisi l'option 7.")
-            option7_main()
+            main_option7()
         elif choice == 8:
             print("\033[1;31;40mAu revoir ;)!")
             break
