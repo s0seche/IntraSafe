@@ -6,8 +6,7 @@ api_key = "B07YQ414IKEO3AN184VEJXKP3IXEYBL1XS9462WFQIEUH3XFJYNMDFN5Z741FY4D"
 # Initialiser l'objet VulnersApi avec votre clé API
 vulners_api = VulnersApi(api_key)
 
-def list_apache_vulnerabilities():
-    cible = input(str("Vuln ? "))
+def list_apache_vulnerabilities(cible):
     try:
         # Récupérer les dernières vulnérabilités liées à Apache
         vulnerabilities = vulners_api.find(cible, limit=3)  # Limitez à 10 vulnérabilités pour cet exemple

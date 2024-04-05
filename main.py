@@ -1,3 +1,8 @@
+import os
+import json
+import time
+import nmap
+
 from action.option1.main_option1 import option1_main
 from action.option2.main_option2 import option2_main
 from action.option3.main_option3 import option3_main
@@ -5,17 +10,12 @@ from action.option4.connectivity import main_option4
 from action.option5.exploit_vuln import option5_main
 from action.option6.data_detection import option6_main
 from action.option7.reporting import main_option7
-from configuration.conf import lire_informations,creer_fichier,fichier_texte,chemin_fichier_json
+from configuration.conf import lire_informations, creer_fichier, fichier_texte, chemin_fichier_json
 from threading import Thread
 
 #INIT conf file
-
-
-
 informations = lire_informations(fichier_texte)
 creer_fichier(informations, chemin_fichier_json)
-
-
 
 def print_logo():
     print("\033[1;35;40m")
@@ -37,7 +37,7 @@ def print_menu():
     print("***               IntraDef                 ***")
     print("**********************************************")
     print("\033[1;33;40m1. Port scanning & services     1")
-    print("\033[1;33;40m2. Vulnerability detection      2")
+    print("\033[1;33;40m2. CVE detection                2")
     print("\033[1;33;40m3. Password security            3")
     print("\033[1;33;40m4. Try connectivity             4")
     print("\033[1;33;40m5. Exploit Vulnerability        5")
@@ -59,8 +59,6 @@ def get_choice():
             print("\033[1;31;40mVeuillez entrer un nombre valide.")
 
 def main():
-    #thread_main_option7 = Thread(target=main_option7)
-    #thread_main_option7.start()
     while True:
         print_logo()
         print_menu()
