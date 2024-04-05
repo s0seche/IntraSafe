@@ -11,8 +11,8 @@ L' objectif principal de cette boîte à outils est d'automatiser les tests de s
    - Identifiez les ports ouverts et les services en cours d'exécution sur un système.
 
 2. **Détection de vulnérabilités** 🚨
-   - Analysez les vulnérabilités présentes et recevez des recommandations pour les corriger.
-
+    - Identifiez les failles de sécurité existantes 
+    
 3. **Analyse de la sécurité des mots de passe fournis** 🔐
    - Évaluez la robustesse des mots de passe fournis pour renforcer la sécurité. 
         - A partir de données sur excel ou keepass
