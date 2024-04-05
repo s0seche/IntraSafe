@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,8 +10,54 @@
     <h1>Test Graph </h1>
     <h3><u>IP cible : {{ ip_address }} </u></h3> <br>
     <p><i>Valeur ficitive de test</i></p>
-    <img src="data:image/png;base64,{{ plot_url_bar }}" alt="Bar Chart">
-    <img src="data:image/png;base64,{{ plot_url_pie }}" alt="Pie Chart">
+    <img id="barChart" src="data:image/png;base64,{{ plot_url_bar }}" alt="Bar Chart">
+    <img id="pieChart" src="data:image/png;base64,{{ plot_url_pie }}" alt="Pie Chart">
+<!--
+    <script>
+        // Fonction pour mettre à jour les graphiques avec de nouvelles données
+        function updateCharts() {
+            // Effectuer une requête AJAX pour récupérer les nouvelles données du serveur
+            fetch('/update_data')
+                .then(response => response.json())
+                .then(data => {
+                    // Mettre à jour les sources des images avec les nouvelles données
+                    document.getElementById('barChart').src = 'data:image/png;base64,' + data.plot_url_bar;
+                    document.getElementById('pieChart').src = 'data:image/png;base64,' + data.plot_url_pie;
+                })
+                .catch(error => console.error('Erreur lors de la récupération des données :', error));
+        }
+
+        // Appeler la fonction de mise à jour lorsque la page est chargée
+        window.onload = updateCharts;
+    </script>
+    -->
 </body>
 </html>
 
+<!-- 
+    index.html 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphiques</title>
+</head>
+<body>
+    <h1>Graphiques</h1>
+    
+    <div>
+        <h2>Port découvert</h2>
+        {{ html_bar | safe }}
+    </div>
+    
+    <div>
+        <h2>Vuln détéctée</h2>
+        {{ html_pie | safe }}
+    </div>
+
+    <p>Adresse IP : {{ ip_address }}</p>
+</body>
+</html>
+-->

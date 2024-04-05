@@ -1,17 +1,21 @@
 from action.option1.main_option1 import option1_main
-from action.option2.vuln_detection import option2_main
+from action.option2.main_option2 import option2_main
 from action.option3.main_option3 import option3_main
-from action.option4.connectivity import option4_main
+from action.option4.connectivity import main_option4
 from action.option5.exploit_vuln import option5_main
 from action.option6.data_detection import option6_main
 from action.option7.reporting import main_option7
 from configuration.conf import lire_informations,creer_fichier,fichier_texte,chemin_fichier_json
-
-
+from threading import Thread
 
 #INIT conf file
+
+
+
 informations = lire_informations(fichier_texte)
 creer_fichier(informations, chemin_fichier_json)
+
+
 
 def print_logo():
     print("\033[1;35;40m")
@@ -38,15 +42,16 @@ def print_menu():
     print("\033[1;33;40m4. Try connectivity             4")
     print("\033[1;33;40m5. Exploit Vulnerability        5")
     print("\033[1;33;40m6. Sensitive data detection     6")
-    print("\033[1;33;40m7. Reporting                    7")
-    print("\033[1;33;40m8. Quitter                      8")
+    print("\033[1;33;40m7. web version                  7")
+    print("\033[1;33;40m8. Pentest                      8")
+    print("\033[1;33;40m9. Quitter                      9")
     print("\033[1;32;40m**********************************************")
 
 def get_choice():
     while True:
         try:
             choice = int(input("\033[1;36;40mChoisissez une option (1-8): "))
-            if 1 <= choice <= 8:
+            if 1 <= choice <= 9:
                 return choice
             else:
                 print("\033[1;31;40mVeuillez entrer un nombre entre 1 et 8.")
@@ -54,6 +59,8 @@ def get_choice():
             print("\033[1;31;40mVeuillez entrer un nombre valide.")
 
 def main():
+    #thread_main_option7 = Thread(target=main_option7)
+    #thread_main_option7.start()
     while True:
         print_logo()
         print_menu()
@@ -70,7 +77,7 @@ def main():
             option3_main()
         elif choice == 4:
             print("\033[1;34;40mVous avez choisi l'option 4.")
-            option4_main()
+            main_option4()
         elif choice == 5:
             print("\033[1;34;40mVous avez choisi l'option 5.")
             option5_main()
@@ -81,6 +88,19 @@ def main():
             print("\033[1;34;40mVous avez choisi l'option 7.")
             main_option7()
         elif choice == 8:
+            choix = 'y'
+            while choix =='y':
+                print("Un pentest va être excuté avec l'ensemble des fonctions de cette toolbox. \nAttention cela ne vous dispense pas d'un réel pentest par des professionels ")
+                choix = input(str("Voulez vous re faire le pentest ?"))
+                
+            """
+            option1_main() nmap
+            option2_main() search sploit
+            option4_main() ping ?
+            option5_main() exploit vuln
+            main_option7()  rapport
+            """
+        elif choice == 9:
             print("\033[1;31;40mAu revoir ;)!")
             break
 

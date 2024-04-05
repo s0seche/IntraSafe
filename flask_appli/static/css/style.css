@@ -1,0 +1,60 @@
+/* Fichier static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+aside {
+    background-color: #1E385B;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #1E385B;
+    color: #fff;
+}
+
+.logo {
+    width: 150px; /* Définissez la largeur souhaitée en pixels */
+    height: auto; /* Cela permet de conserver les proportions de l'image */
+}
+
+/* Ajoutez d'autres styles selon vos besoins */
+
+
+#graphique-container {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+#graphique-container canvas {
+    max-width: 100%;
+    height: auto;
+}

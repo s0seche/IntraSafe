@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <aside>
+        <p>{{ ip }} </p>
+        <img src="{{ url_for('static', filename='logo/pouet.png') }}" alt="Logo" class="logo">        
+        <h1>Menu</h1>
+        <ul>
+            <li><a href="{{ url_for('accueil') }}" style="color: #fff; text-decoration: none;">Accueil</a></li>
+            <br>
+            <li><a href="{{ url_for('graphique') }}" style="color: #fff; text-decoration: none;">Graphique</a></li>
+            <br>
+            <li><a href="{{ url_for('tableau') }}" style="color: #fff; text-decoration: none;">Tableau</a></li>
+        </ul>
+    </aside>
+    <main>
+        <h1>Graphique</h1>
+    
+        <!-- Ajoutez une div pour entourer le graphique -->
+        <div id="graphique-container">
+            <canvas id="monGraphique" width="250" height="150"></canvas>
+        </div>
+
+        <button onclick="actualiser()">Actualiser</button>
+    </main>
+
+    <script>
+        // Initialiser le graphique avec les données initiales
+        var donneesInitiales = {{ donnees | tojson | safe }};
+        var labels = donneesInitiales.map(entry => entry.Service);
+        var data = donneesInitiales.map(entry => entry.Port);
+
+        var ctx = document.getElementById('monGraphique').getContext('2d');
+        var monGraphique = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Ports',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        function actualiser() {
+            fetch('/actualiser')
+                .then(response => response.json())
+                .then(nouvellesDonnees => {
+                    // Mettre à jour les données dans le graphique
+                    monGraphique.data.labels = nouvellesDonnees.map(entry => entry.Service);
+                    monGraphique.data.datasets[0].data = nouvellesDonnees.map(entry => entry.Port);
+                    monGraphique.update();
+                });
+        }
+    </script>
+</body>
+</html>
