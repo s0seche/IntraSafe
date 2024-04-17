@@ -1,4 +1,3 @@
-/* Fichier static/styles.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -43,8 +42,21 @@ th {
     height: auto; /* Cela permet de conserver les proportions de l'image */
 }
 
-/* Ajoutez d'autres styles selon vos besoins */
+.pouet {
+    width: 300px;
+    height: 500px;
+    padding: 20px;
+    margin-top: 300px;
+    text-align:left;
+}
+.titre {
+    margin-left: 40px;
+    width: 400px;
+    height: 800px;
+    padding: 20px;
+    text-align: right;
 
+}
 
 #graphique-container {
     width: 300px;

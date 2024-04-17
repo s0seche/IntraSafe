@@ -38,8 +38,8 @@ git clone https://github.com/s0seche/IntraSafe.git
 pip install -r requirements.txt
 ```
 
-`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "configuration.txt". Cela améliorera votre experience utilisateur de IntraSafe
+`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "configuration.txt". Cela améliorera votre experience utilisateur de IntraSafe. Il est important de lançer le script avec les droits administrateurs.
 
 ```bash
-python3 main.py
+sudo python3 main.py
 ```

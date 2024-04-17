@@ -5,3 +5,5 @@ python-nmap
 Flask
 matplotlib
 pythonping
+paramiko
+vulners

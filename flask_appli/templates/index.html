@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Application Flask</title>
+    <title>IntraDef</title>
 </head>
 <body>
     <aside>
-        <p>{{ ip }} </p>
+        <p><b>Target : {{ ip }} </b></p>
         <img src="{{ url_for('static', filename='logo/pouet.png') }}" alt="Logo" class="logo">        
         <h1>Menu</h1>
         <ul>
@@ -19,22 +19,10 @@
             <li><a href="{{ url_for('tableau') }}" style="color: #fff; text-decoration: none;">Tableau</a></li>
         </ul>
     </aside>
-    <h1>Données depuis le JSON</h1>
-    <p>{{ donnees }}</p>
-    <button onclick="actualiser()">Actualiser</button>
-    
-    <!-- Ajustez le lien pour pointer vers la nouvelle page -->
-    <a href="{{ url_for('graphique') }}"><button>Aller à l'autre page</button></a>
+    <h1>Bienvenue sur IntraDef</h1>
 
-    <script>
-        function actualiser() {
-            fetch('/actualiser')
-                .then(response => response.json())
-                .then(data => {
-                    // Mettez à jour les données dans la page
-                    document.querySelector('p').innerText = JSON.stringify(data);
-                });
-        }
-    </script>
 </body>
+    <span class="pouet">
+        <p> <u> <b> Protégez leurs SI</b></u></p>
+    </span>
 </html>

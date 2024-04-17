@@ -3,15 +3,15 @@ import json
 app = Flask(__name__)
 
     # Charger les données initiales depuis le fichier JSON
-with open('../scan.json', 'r') as fichier_json:
+with open('../action/option1/scan.json', 'r') as fichier_json:
     donnees = json.load(fichier_json)
 
     # Récupérer l'IP du premier élément du JSON
-ip = donnees[0]["ip_address"]
+ip = donnees[0]["host"]
 
     # Fonction pour actualiser les données
 def actualiser_donnees():
-    with open('../scan.json', 'r') as fichier_json:
+    with open('../action/option1/scan.json', 'r') as fichier_json:
         nouvelles_donnees = json.load(fichier_json)
     return nouvelles_donnees
     # Routes
@@ -30,5 +30,5 @@ def tableau():
 def graphique():
     return render_template('graphique.html', donnees=donnees, ip=ip)
 if __name__ == '__main__':
-        app.run(debug=True)
+        app.run(debug=False)
 

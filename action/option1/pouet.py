@@ -1,5 +1,3 @@
-# scan.py
-
 import time 
 import nmap
 import os
@@ -27,7 +25,7 @@ def nmap_scan_common(target):
         # Scanner l'adresse IP
         nm = nmap.PortScanner()
         try:  
-            nm.scan(hosts=ip_address, arguments='-sT -A')  
+            nm.scan(hosts=ip_address, arguments='-sS -sV')  # Utilisation des options -sS (Scan SYN) et -sV (Détection de version)
             # Affichage des résultats
             scan_results = {}
             for host in nm.all_hosts():
@@ -36,10 +34,14 @@ def nmap_scan_common(target):
                     scan_results[host][proto] = {}
                     ports = nm[host][proto].keys()
                     for port in ports:
-                        scan_results[host][proto][port] = {
-                            'state': nm[host][proto][port]['state'],
-                            'service': nm[host][proto][port]['name'],
-                            'version': nm[host][proto][port]['version']
+                        port_number = int(port)
+                        service_name = nm[host][proto][port]['name']
+                        service_version = nm[host][proto][port]['version']
+                        port_state = nm[host][proto][port]['state']
+                        scan_results[host][proto][port_number] = {
+                            'state': port_state,
+                            'service': service_name,
+                            'version': service_version
                         }
             end_time = time.time()
             duration = end_time - start_time
@@ -49,11 +51,22 @@ def nmap_scan_common(target):
             print(f"Une erreur s'est produite : {e}")
     else:
         print("Impossible de récupérer l'adresse IP à partir du fichier JSON.")
-
 def save_scan_results_to_json(scan_results, output_file_path):
     try:
+        formatted_results = []
+        for host, protocols in scan_results.items():
+            for proto, ports in protocols.items():
+                for port, data in ports.items():
+                    formatted_results.append({
+                        "host": host,
+                        "port": int(port),
+                        "service": data["service"],
+                        "version": data.get("version", ""),
+                        "state": data.get("state", "")
+                    })
+
         with open(output_file_path, 'w') as json_file:
-            json.dump(scan_results, json_file, indent=4)
+            json.dump(formatted_results, json_file, indent=4)
         print(f"Les résultats du scan ont été enregistrés dans {output_file_path}.")
     except Exception as e:
         print(f"Erreur lors de l'enregistrement des résultats du scan : {e}")
