@@ -41,7 +41,7 @@ def print_menu():
     print("\033[1;33;40m3. Password security            3")
     print("\033[1;33;40m4. Try defaults credentials     4") # add for ftp 
     print("\033[1;33;40m5. Analyze Web site             5") # dirsearch
-    print("\033[1;33;40m6. Sensitive data detection     6") # ?? 
+    print("\033[1;33;40m6. Create personalize wordlist  6") # Cupp 
     print("\033[1;33;40m7.    ??               7")    
     print("\033[1;33;40m8. Pentest                      8") # auto detectction  
     print("\033[1;33;40m9. Quitter                      9")

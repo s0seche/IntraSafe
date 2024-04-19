@@ -25,7 +25,7 @@ def brute_force_ssh(hostname, port, username, password):
         client.connect(hostname, port, username, password)
 
         # Si la connexion réussit, afficher un message de succès
-        print(f"Connexion SSH réussie avec {username}/{password}")
+        print(f"\033[1;31;40mConnexion SSH réussie avec {username}/{password}")
 
         # Fermeture de la connexion SSH
         client.close()
