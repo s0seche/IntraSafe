@@ -6,13 +6,18 @@
     },
     {
         "host": "127.0.0.1",
-        "port": 3306,
-        "service": "mysql"
+        "port": 80,
+        "service": "http"
     },
     {
         "host": "127.0.0.1",
-        "port": 5000,
-        "service": "upnp"
+        "port": 443,
+        "service": "http"
+    },
+    {
+        "host": "127.0.0.1",
+        "port": 3306,
+        "service": "mysql"
     },
     {
         "host": "127.0.0.1",

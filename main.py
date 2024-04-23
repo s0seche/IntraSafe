@@ -1,17 +1,12 @@
-import os
-import json
-import time
-import nmap
-# 1234 finis 
 from action.option1.main_option1 import option1_main
 from action.option2.main_option2 import option2_main
 from action.option3.main_option3 import option3_main
 from action.option4.main_option4 import main_option4 
 from action.option5.exploit_vuln import option5_main
+from action.option5.vuln import jibou
 from action.option6.data_detection import option6_main
 from action.option7.reporting import main_option7
 from configuration.conf import lire_informations, creer_fichier, fichier_texte, chemin_fichier_json
-from threading import Thread
 
 #INIT conf file
 informations = lire_informations(fichier_texte)
@@ -40,9 +35,9 @@ def print_menu():
     print("\033[1;33;40m2. CVE detection                2")
     print("\033[1;33;40m3. Password security            3")
     print("\033[1;33;40m4. Try defaults credentials     4") # add for ftp 
-    print("\033[1;33;40m5. Analyze Web site             5") # dirsearch
+    print("\033[1;33;40m5. Analyze Web site             5") # detect XSS
     print("\033[1;33;40m6. Create personalize wordlist  6") # Cupp 
-    print("\033[1;33;40m7.    ??               7")    
+    print("\033[1;33;40m7.    OSINT TOOl                7")    
     print("\033[1;33;40m8. Pentest                      8") # auto detectction  
     print("\033[1;33;40m9. Quitter                      9")
     print("\033[1;32;40m**********************************************")
@@ -78,7 +73,7 @@ def main():
             main_option4()
         elif choice == 5:
             print("\033[1;34;40mVous avez choisi l'option 5.")
-            option5_main()
+            jibou()
         elif choice == 6:
             print("\033[1;34;40mVous avez choisi l'option 6.")
             option6_main()

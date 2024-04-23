@@ -6,4 +6,4 @@ Flask
 matplotlib
 pythonping
 paramiko
-vulners
+vulnersbs4
