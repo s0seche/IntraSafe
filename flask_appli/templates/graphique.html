@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,8 @@
         <ul>
             <li><a href="{{ url_for('accueil') }}" style="color: #fff; text-decoration: none;">Accueil</a></li>
             <br>
+            <li><a href = "templates/tableau-cve.html" style="color: #fff; text-decoration: none;">tablo</a></li>
+            <br>
             <li><a href="{{ url_for('graphique') }}" style="color: #fff; text-decoration: none;">Graphique</a></li>
             <br>
             <li><a href="{{ url_for('tableau') }}" style="color: #fff; text-decoration: none;">Tableau</a></li>
@@ -23,7 +26,6 @@
     <main>
         <h1>Graphique</h1>
     
-        <!-- Ajoutez une div pour entourer le graphique -->
         <div id="graphique-container">
             <canvas id="monGraphique" width="250" height="150"></canvas>
         </div>
@@ -60,6 +62,76 @@
                     monGraphique.data.labels = nouvellesDonnees.map(entry => entry.Service);
                     monGraphique.data.datasets[0].data = nouvellesDonnees.map(entry => entry.Port);
                     monGraphique.update();
+                });
+        }
+    </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <aside>
+        <p>{{ ip }} </p>
+        <img src="{{ url_for('static', filename='logo/pouet.png') }}" alt="Logo" class="logo">        
+        <h1>Menu</h1>
+        <ul>
+            <li><a href="{{ url_for('accueil') }}" style="color: #fff; text-decoration: none;">Accueil</a></li>
+            <br>
+            <li><a href="{{ url_for('graphique') }}" style="color: #fff; text-decoration: none;">Graphique</a></li>
+            <br>
+            <li><a href="{{ url_for('tableau') }}" style="color: #fff; text-decoration: none;">Tableau</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <h1>Liste des ports ouverts</h1>
+
+        <!-- Ajoutez un bouton pour actualiser les données -->
+        <button onclick="actualiser()">Actualiser</button>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Port</th>
+                    <th>Service</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in donnees %}
+                    <tr>
+                        <td>{{ entry.port }}</td>
+                        <td>{{ entry.service }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        function actualiser() {
+            fetch('/actualiser')
+                .then(response => response.json())
+                .then(nouvellesDonnees => {
+                    // Mettre à jour les données dans le tableau
+                    const tbody = document.querySelector('tbody');
+                    tbody.innerHTML = ""; // Efface le contenu actuel du tableau
+
+                    nouvellesDonnees.forEach(entry => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${entry.port}</td>
+                            <td>${entry.service}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
                 });
         }
     </script>

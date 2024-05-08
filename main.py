@@ -1,4 +1,4 @@
-from action.option1.main_option1 import option1_main
+from action.option1.main_option1  import option1_main
 from action.option2.main_option2 import option2_main
 from action.option3.main_option3 import option3_main
 from action.option4.main_option4 import main_option4 
@@ -6,11 +6,24 @@ from action.option5.exploit_vuln import option5_main
 from action.option5.vuln import jibou
 from action.option6.data_detection import option6_main
 from action.option7.reporting import main_option7
+from action.option8.generate_pdf import generate_pdf_vulnerability_report
 from configuration.conf import lire_informations, creer_fichier, fichier_texte, chemin_fichier_json
 
 #INIT conf file
 informations = lire_informations(fichier_texte)
 creer_fichier(informations, chemin_fichier_json)
+def get_choice():
+    while True:
+        try:
+            choice = int(input("\033[1;34;40mEntrez votre choix: "))
+            if choice < 1 or choice > 9:
+                print("\033[1;31;40mVeuillez entrer un nombre entre 1 et 9.")
+                continue
+            return choice
+        except ValueError:
+            continue
+
+
 
 def print_logo():
     print("\033[1;35;40m")
@@ -38,27 +51,14 @@ def print_menu():
     print("\033[1;33;40m5. Analyze Web site             5") # detect XSS
     print("\033[1;33;40m6. Create personalize wordlist  6") # Cupp 
     print("\033[1;33;40m7.    OSINT TOOl                7")    
-    print("\033[1;33;40m8. Pentest                      8") # auto detectction  
+    print("\033[1;33;40m8. Generate report              8") # auto detectction  
     print("\033[1;33;40m9. Quitter                      9")
-    print("\033[1;32;40m**********************************************")
-
-def get_choice():
-    while True:
-        try:
-            choice = int(input("\033[1;36;40mChoisissez une option (1-8): "))
-            if 1 <= choice <= 9:
-                return choice
-            else:
-                print("\033[1;31;40mVeuillez entrer un nombre entre 1 et 8.")
-        except ValueError:
-            print("\033[1;31;40mVeuillez entrer un nombre valide.")
 
 def main():
     while True:
         print_logo()
         print_menu()
         choice = get_choice()
-
         if choice == 1:
             print("\033[1;34;40mVous avez choisi l'option 1.")
             option1_main()
@@ -81,18 +81,11 @@ def main():
             print("\033[1;34;40mVous avez choisi l'option 7.")
             main_option7()
         elif choice == 8:
-            choix = 'y'
-            while choix =='y':
-                print("Un pentest va être excuté avec l'ensemble des fonctions de cette toolbox. \nAttention cela ne vous dispense pas d'un réel pentest par des professionels ")
-                choix = input(str("Voulez vous re faire le pentest ?"))
+            generate_pdf_vulnerability_report('action/option1/scan.json', 'report.pdf')
+            
+
                 
-            """
-            option1_main() nmap
-            option2_main() search sploit
-            option4_main() ping ?
-            option5_main() exploit vuln
-            main_option7()  rapport
-            """
+
         elif choice == 9:
             print("\033[1;31;40mAu revoir ;)!")
             break
