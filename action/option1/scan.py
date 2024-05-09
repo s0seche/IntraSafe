@@ -3,7 +3,7 @@ import json
 import time
 import nmap
 
-json_file_path = 'configuration/conf.json'
+json_file_path = 'conf.json'
 output_file_path = 'action/option1/scan.json'
 
 def get_ip_from_json(json_file_path):

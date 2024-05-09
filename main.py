@@ -5,13 +5,11 @@ from action.option4.main_option4 import main_option4
 from action.option5.exploit_vuln import option5_main
 from action.option5.vuln import jibou
 from action.option6.data_detection import option6_main
-from action.option7.reporting import main_option7
+from action.option7.osint import get_info_ip
 from action.option8.generate_pdf import generate_pdf_vulnerability_report
-from configuration.conf import lire_informations, creer_fichier, fichier_texte, chemin_fichier_json
 
 #INIT conf file
-informations = lire_informations(fichier_texte)
-creer_fichier(informations, chemin_fichier_json)
+
 def get_choice():
     while True:
         try:
@@ -50,7 +48,7 @@ def print_menu():
     print("\033[1;33;40m4. Try defaults credentials     4") # add for ftp 
     print("\033[1;33;40m5. Analyze Web site             5") # detect XSS
     print("\033[1;33;40m6. Create personalize wordlist  6") # Cupp 
-    print("\033[1;33;40m7.    OSINT TOOl                7")    
+    print("\033[1;33;40m7.    shodan                    7")    
     print("\033[1;33;40m8. Generate report              8") # auto detectction  
     print("\033[1;33;40m9. Quitter                      9")
 
@@ -79,7 +77,7 @@ def main():
             option6_main()
         elif choice == 7:
             print("\033[1;34;40mVous avez choisi l'option 7.")
-            main_option7()
+            get_info_ip("conf.json")
         elif choice == 8:
             generate_pdf_vulnerability_report('action/option1/scan.json', 'report.pdf')
             

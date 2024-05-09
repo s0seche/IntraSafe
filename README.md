@@ -17,17 +17,21 @@ L' objectif principal de cette boîte à outils est d'automatiser les tests de s
    - Évaluez la robustesse des mots de passe fournis pour renforcer la sécurité. 
         - A partir de données sur excel ou keepass
 
-4. **Tests d'authentification d'identifiants fournis** 🤖
-   - Effectuez des tests d'authentification pour évaluer la résistance des identifiants fournis.
+4. **Tests des identifiants  d'authentification par défaut** 🤖
+   - Effectuez des tests d'authentification pour évaluer la résistance de votre service SSH.
 
-5. **Exploitation de vulnérabilités** 💻
-   - Exploitez les vulnérabilités détectées de manière automatisée pour mesurer leur impact.
+5. **Détection de vulnérabilités Web** 💻
+   - Détecter les vulnérabtilité XSS sur page web .
+        - La faille XSS (Cross-Site Scripting) est une vulnérabilité de sécurité sur les sites web, permettant aux attaquants d'injecter et d'exécuter du code malveillant dans les navigateurs des utilisateurs.
 
-6. **Détection de données sensibles** 🕵️‍♂️
-   - Identifiez les données sensibles et élaborez des stratégies pour les protéger.
+6. **Création de Wordlist** 🕵️‍♂️
+   - Crée votre propre wordlist personalisé pour vos attaques.
 
-7. **Création de rapports et visualisations graphiques** 📊
-   - Générez des rapports détaillés et des visualisations graphiques pour faciliter la compréhension des résultats.
+7. **Génerer un scan Shodanb** 📊
+   - Générez des rapports détaillés sur une adresse IP
+
+8. **Création de rapports et visualisations graphiques** 📊
+   - Générez des rapports détaillés sur les failles trouvées pour faciliter la compréhension des résultats.
 
 ## Configuration
 
@@ -38,10 +42,13 @@ git clone https://github.com/s0seche/IntraSafe.git
 pip install -r requirements.txt
 ```
 
-`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "configuration.txt". Cela améliorera votre experience utilisateur de IntraSafe. Il est important de lançer le script avec les droits administrateurs.
+`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "conf.json". Cela améliorera votre experience utilisateur de IntraSafe. Il est important de lançer le script avec les droits administrateurs.
 
 ```bash
 sudo python3 main.py
 ```
-
+Pour lancer la version Web il faut vous rendre dans le répertoire " flask_appli" et éxucter la comande
+```bash
+sudo python3 app.py
+```
 

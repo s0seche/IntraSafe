@@ -4,7 +4,7 @@ output_file_path = 'scan.json'  # Chemin pour enregistrer le fichier JSON de sor
 def option1_main():
     choix = 'y'
     while choix.lower() in ['y', 'yes']:
-        json_file_path = 'configuration/conf.json'
+        json_file_path = 'conf.json'
         target = get_ip_from_json(json_file_path)
         if target:
             results_common = nmap_scan_common(target)

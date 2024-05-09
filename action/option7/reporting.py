@@ -1,15 +1,36 @@
-from action.option7.web_page import web_application
-#import webbrowser
+import json
 
-def main_option7():
-    web_application()
-"""
-    choix = 'y'
-    while choix.lower() =='y' or choix.lower() =='yes':
-            try:
-                print(f"Lancement de l'appliaction web...")
-                print(f"L'application à finis de s'init \n vous pouvez y accèder à partir \n http://localhost:5000")
-            except Exception as e:
-                print(f"Erreur lors de l'éxcution de l'application web {e}")
+def extraire_infos(json_file):
+    with open(json_file, 'r') as f:
+        data = json.load(f)
     
-    """
+    # Extraire les coordonnées GPS
+    latitude = data.get('latitude')
+    longitude = data.get('longitude')
+    
+    # Extraire les informations importantes
+    isp = data.get('isp')
+    org = data.get('org')
+    city = data.get('city')
+    country_name = data.get('country_name')
+    
+    # Extraire l'hostname et le nom DNS
+    hostnames = data.get('hostnames', [])
+    domains = data.get('domains', [])
+    
+    return {
+        "Coordonnées GPS": (latitude, longitude),
+        "Informations importantes": {
+            "ISP": isp,
+            "Organisation": org,
+            "Ville": city,
+            "Pays": country_name
+        },
+        "Hostname": hostnames,
+        "Nom DNS": domains
+    }
+
+# Utilisation de la fonction
+json_file = "osint.json"
+infos = extraire_infos(json_file)
+print(json.dumps(infos, indent=4))

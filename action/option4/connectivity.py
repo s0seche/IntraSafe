@@ -1,7 +1,7 @@
 import paramiko
 import json
 
-json_file_path = 'configuration/conf.json'  # Chemin vers le fichier JSON contenant l'adresse IP à scanner
+json_file_path = 'conf.json'  # Chemin vers le fichier JSON contenant l'adresse IP à scanner
 
 def get_ip_from_json(json_file_path):
     try:
