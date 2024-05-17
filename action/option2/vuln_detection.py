@@ -1,18 +1,16 @@
 from vulners import VulnersApi
 import json
 
-# Définir votre clé API
-api_key = "B07YQ414IKEO3AN184VEJXKP3IXEYBL1XS9462WFQIEUH3XFJYNMDFN5Z741FY4D"
+# clé API Vulner
+api_key = "GAMNRV2MFM5JVEQPXWPRBU83HPKXR0RV6YTY38NFCWNSZHR0AMX2CC6DLFUB4ADQ"
 
-# Initialiser l'objet VulnersApi avec votre clé API
 vulners_api = VulnersApi(api_key)
 
-def list_apache_vulnerabilities(cible):
+def list_vuln(cible):
     try:
-        # Récupérer les dernières vulnérabilités liées à Apache
-        vulnerabilities = vulners_api.find(cible, limit=5)  # Limitez à 3 vulnérabilités pour cet exemple
+        vulnerabilities = vulners_api.find(cible, limit=5)  # Limitez à 5 vuln
         vuln_list = []
-        # Afficher les vulnérabilités
+        # Afficher les vuln
         for vulnerability in vulnerabilities:
             vuln_data = {
                 "CVE ID": vulnerability.get("id"),
@@ -28,4 +26,16 @@ def list_apache_vulnerabilities(cible):
     except Exception as e:
         print("Une erreur s'est produite lors de la recherche de vulnérabilités:", e)
 
-# Appel de la fonction pour lister les vulnérabilités Apache
+
+def print_pretty_json(data, indent=0):
+    for item in data:
+        print('\t' * indent + "CVE ID:", item.get("CVE ID"))
+        print('\t' * indent + "Description:", item.get("Description"))
+        print('\t' * indent + "CVSS Score:", item.get("CVSS Score"))
+        references = item.get("References")
+        if references:
+            print('\t' * indent + "References:")
+            for reference in references:
+                print('\t' * (indent + 1) + reference)
+        else:
+            print('\t' * indent + "References: None")

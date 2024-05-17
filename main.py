@@ -3,9 +3,8 @@ from action.option2.main_option2 import option2_main
 from action.option3.main_option3 import option3_main
 from action.option4.main_option4 import main_option4 
 from action.option5.exploit_vuln import option5_main
-from action.option5.vuln import jibou
 from action.option6.data_detection import option6_main
-from action.option7.osint import get_info_ip
+from action.option7.osint import shodan_scan
 from action.option8.generate_pdf import generate_pdf_vulnerability_report
 
 #INIT conf file
@@ -45,10 +44,10 @@ def print_menu():
     print("\033[1;33;40m1. Port scanning & services     1")
     print("\033[1;33;40m2. CVE detection                2")
     print("\033[1;33;40m3. Password security            3")
-    print("\033[1;33;40m4. Try defaults credentials     4") # add for ftp 
-    print("\033[1;33;40m5. Analyze Web site             5") # detect XSS
+    print("\033[1;33;40m4. Try defaults credentials(ssh)4") # add for ftp 
+    print("\033[1;33;40m5. Detect XSS                   5") # detect XSS
     print("\033[1;33;40m6. Create personalize wordlist  6") # Cupp 
-    print("\033[1;33;40m7.    shodan                    7")    
+    print("\033[1;33;40m7. Shodan                       7")    
     print("\033[1;33;40m8. Generate report              8") # auto detectction  
     print("\033[1;33;40m9. Quitter                      9")
 
@@ -71,13 +70,13 @@ def main():
             main_option4()
         elif choice == 5:
             print("\033[1;34;40mVous avez choisi l'option 5.")
-            jibou()
+            option5_main()
         elif choice == 6:
             print("\033[1;34;40mVous avez choisi l'option 6.")
             option6_main()
         elif choice == 7:
             print("\033[1;34;40mVous avez choisi l'option 7.")
-            get_info_ip("conf.json")
+            shodan_scan("conf.json")
         elif choice == 8:
             generate_pdf_vulnerability_report('action/option1/scan.json', 'report.pdf')
             

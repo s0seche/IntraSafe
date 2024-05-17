@@ -38,17 +38,17 @@ th {
 }
 
 .logo {
-    width: 150px; /* Définissez la largeur souhaitée en pixels */
-    height: auto; /* Cela permet de conserver les proportions de l'image */
+    width: 150px; 
+    height: auto; 
+}
+.jibou {
+    width: 1000px;
+    height: 100px;
+    margin-top: 250px;
+    text-align: left;
+    font-size: 30px; 
 }
 
-.pouet {
-    width: 300px;
-    height: 500px;
-    padding: 20px;
-    margin-top: 300px;
-    text-align:left;
-}
 .titre {
     margin-left: 40px;
     width: 400px;

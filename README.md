@@ -36,17 +36,24 @@ L' objectif principal de cette boîte à outils est d'automatiser les tests de s
 ## Configuration
 
 ```bash
-git clone https://github.com/s0seche/IntraSafe.git
+git clone https://github.com/s0seche/IntraDEF.git
 ```
 ```bash
 pip install -r requirements.txt
 ```
 
-`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "conf.json". Cela améliorera votre experience utilisateur de IntraSafe. Il est important de lançer le script avec les droits administrateurs.
+`Avant de commencer`, veuillez insérer vos informations de configuration dans le fichier "conf.json". Cela améliorera votre experience utilisateur de IntraSafe. Il est important de lançer le script avec les droits administrateurs et de le lançer sur une machine Linux 
 
 ```bash
 sudo python3 main.py
 ```
+Pour modifier le serveur cible pour détecter les failles XSS il faut vous rendre dans 
+
+```bash
+action/option5/vuln.py
+```
+`Et modifier la ligne 23`
+
 Pour lancer la version Web il faut vous rendre dans le répertoire " flask_appli" et éxucter la comande
 ```bash
 sudo python3 app.py

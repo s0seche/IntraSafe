@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo/logo.png') }}">
+    <link rel="icon" type="image/png" href="static/logo/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NMAP</title>
+    <title>CVE</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <aside>
+        <p>{{ ip }}</p>
         <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="Logo" class="logo">        
         <h1>Menu</h1>
         <ul>
@@ -21,22 +22,25 @@
     </aside>
 
     <main>
-        <h1>Liste des ports ouverts</h1>
+        <h1>Liste des CVE des ports ouverts</h1>
 
-        <button onclick="actualiser()">Actualiser</button>
+        <button onclick="actualiser_cve()">Actualiser</button>
     
         <table>
             <thead>
                 <tr>
-                    <th>Port</th>
-                    <th>Service</th>
+                    <th>CVE ID</th>
+                    <th>Description</th>
+                    <th>Score CVSS</th>
                 </tr>
             </thead>
             <tbody>
-                {% for entry in donnees %}
+                {% for entry in donnees_cve %}
                     <tr>
-                        <td>{{ entry.port }}</td>
-                        <td>{{ entry.service }}</td>
+                        <td>{{ entry['CVE ID'] }}</td>
+                        <td>{{ entry['Description'] }}</td>
+                        <td>{{ entry['CVSS Score'] }}</td>
+
                     </tr>
                 {% endfor %}
             </tbody>
@@ -44,8 +48,8 @@
     </main>
 
     <script>
-        function actualiser() {
-            fetch('/actualiser')
+        function actualiser_cve() {
+            fetch('/actualiser_cve')
                 .then(response => response.json())
                 .then(nouvellesDonnees => {
                     // Mettre à jour les données dans le tableau
@@ -55,14 +59,13 @@
                     nouvellesDonnees.forEach(entry => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                            <td>${entry.port}</td>
-                            <td>${entry.service}</td>
+                            <td>${entry['CVE ID']}</td>
+                            <td>${entry['Description']}</td>
+                            <td>${entry['CVSS Score']}</td>
+
                         `;
                         tbody.appendChild(row);
                     });
-                })
-                .catch(error => {
-                    console.error('Erreur lors de la récupération des données:', error);
                 });
         }
     </script>

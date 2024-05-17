@@ -1,0 +1,32 @@
+[
+    {
+        "CVE ID": "CVE-2021-45099",
+        "Description": "The addon.stdin service in addon-ssh (aka Home Assistant Community Add-on: SSH & Web Terminal) before 10.0.0 has an attack surface that requires social engineering. NOTE: the vendor does not agree that this is a vulnerability; however, addon.stdin was removed as a defense-in-depth measure against complex social engineering situations",
+        "CVSS Score": 6.8,
+        "References": null
+    },
+    {
+        "CVE ID": "MSF:AUXILIARY-SCANNER-SSH-SSH_LOGIN_PUBKEY-",
+        "Description": "This module will test ssh logins on a range of machines using a defined private key file, and report successful logins. If you have loaded a database plugin and connected to a database this module will record successful logins and hosts so you can track your access. Key files may be a single private key, or several private keys in a single directory. Only a single passphrase is supported however, so it must either be shared between subject keys or only belong to a single one.\n",
+        "CVSS Score": 0.0,
+        "References": null
+    },
+    {
+        "CVE ID": "MSF:AUXILIARY-SCANNER-SSH-SSH_LOGIN-",
+        "Description": "This module will test ssh logins on a range of machines and report successful logins. If you have loaded a database plugin and connected to a database this module will record successful logins and hosts so you can track your access.\n",
+        "CVSS Score": 0.0,
+        "References": null
+    },
+    {
+        "CVE ID": "MSF:AUXILIARY-SCANNER-SSH-KARAF_LOGIN-",
+        "Description": "This module attempts to log into Apache Karaf's SSH. If the TRYDEFAULTCRED option is set, then it will also try the default 'karaf' credential.\n",
+        "CVSS Score": 0.0,
+        "References": null
+    },
+    {
+        "CVE ID": "GHSA-F22J-37JJ-CXW9",
+        "Description": "The default configuration for salt-ssh in Salt (aka SaltStack) 0.17.0 does not validate the SSH host key of requests, which allows remote attackers to have unspecified impact via a man-in-the-middle (MITM) attack.",
+        "CVSS Score": 9.3,
+        "References": null
+    }
+]

@@ -1,9 +1,0 @@
-Pour vérifier la sécurité de votre mot de passe veuillez rentrer les champs suivants
-
-Nom:changeme
-Prenom:changeme
-Ville:changeme
-Age:changeme
-
-Pour les scans de vulnérabilités veuillez rentrer l'ip choisi
-IP:127.0.0.1

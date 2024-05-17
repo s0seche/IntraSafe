@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="static/logo/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>IntraDef</title>
 </head>
 <body>
     <aside>
-        <p><b>Target : {{ ip }} </b></p>
-        <img src="{{ url_for('static', filename='logo/pouet.png') }}" alt="Logo" class="logo">        
+        <p>{{ ip }}</p>
+        <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="Logo" class="logo">        
         <h1>Menu</h1>
         <ul>
             <li><a href="{{ url_for('accueil') }}" style="color: #fff; text-decoration: none;">Accueil</a></li>
             <br>
-            <li><a href="{{ url_for('graphique') }}" style="color: #fff; text-decoration: none;">Graphique</a></li>
+            <li><a href="{{ url_for('graphique') }}" style="color: #fff; text-decoration: none;">Services ouverts</a></li>
             <br>
-            <li><a href="{{ url_for('tableau') }}" style="color: #fff; text-decoration: none;">Tableau</a></li>
+            <li><a href="{{ url_for('tableau_cve') }}" style="color: #fff; text-decoration: none;">Tableau CVE</a></li>
         </ul>
     </aside>
     <h1>Bienvenue sur IntraDef</h1>
 
 </body>
-    <span class="pouet">
-        <p> <u> <b> Protégez leurs SI</b></u></p>
+    <span class="jibou">
+        <p>IntraDef est un projet, réalisé pour l'école <u><b>Sup de Vinci</b></u>.<br> Il a pour but de vous aidé dans la phase reconaissance d'un pentest. Grâce à ce projet vous gagnerez du temps sur la première partie d'un audit de sécurité.<br> Sur cette version Web vous retrouvez les informations récupérer au préalable grâce à la version CLI mais afficher de manière simple et facile à lire.
+            <br> Ce projet à été réalisé par <b><u>Jean Baptiste BEL</u></b></p>
     </span>
 </html>

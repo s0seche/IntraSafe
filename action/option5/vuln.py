@@ -1,14 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
-def jibou():
+def vuln_web():
         
     # Fonction pour détecter les failles XSS
     def detect_xss(url):
         try:
-            # Envoie de la requête GET à l'URL spécifiée
             response = requests.get(url)
-
-            # Analyse du contenu HTML
             soup = BeautifulSoup(response.content, 'html.parser')
 
             # Recherche de balises potentiellement vulnérables
@@ -23,6 +20,5 @@ def jibou():
         except requests.RequestException as e:
             print("Erreur lors de la requête :", e)
 
-    # Exemple d'utilisation
-    url = "http://localhost/Vulnerable-Web-Application/XSS/XSS_level1.php"  # Remplacez par l'URL de votre site cible
+    url = "http://localhost/Vulnerable-Web-Application/XSS/XSS_level1.php"  # CIBLE
     detect_xss(url)

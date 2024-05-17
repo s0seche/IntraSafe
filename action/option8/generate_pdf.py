@@ -6,11 +6,10 @@ from reportlab.platypus import Paragraph
 from vulners import VulnersApi
 import json
 
-# Définir votre clé API
+#API Vulner
 api_key = "GAMNRV2MFM5JVEQPXWPRBU83HPKXR0RV6YTY38NFCWNSZHR0AMX2CC6DLFUB4ADQ"
-
-# Initialiser l'objet VulnersApi avec votre clé API
 vulners_api = VulnersApi(api_key)
+
 
 # Définir un style pour le texte en gras
 styles = getSampleStyleSheet()
@@ -19,17 +18,16 @@ bold_style.fontName = 'Helvetica-Bold'
 
 def generate_pdf_vulnerability_report(json_file, pdf_file):
     try:
-        # Créer un nouveau fichier PDF
         c = canvas.Canvas(pdf_file, pagesize=letter)
         c.setFont("Helvetica", 12)
 
-        # Titre "Intradef" en gras
+        # Titre 
         c.setFont("Helvetica-Bold", 24)
         title_text = "Intradef"
         title_width = c.stringWidth(title_text)
         c.drawString((letter[0] - title_width) / 2, 750, title_text)
 
-        # En-tête "Jean Baptiste BEL"
+        # En-tête 
         c.setFont("Helvetica", 12)
         header_text = "Jean Baptiste BEL"
         header_width = c.stringWidth(header_text)
@@ -50,17 +48,15 @@ def generate_pdf_vulnerability_report(json_file, pdf_file):
                 c.setFont("Helvetica", 12)
                 y_position = 750  # Réinitialiser la position verticale après le saut de page
 
-            # Mettre en gras le nom du service et le numéro de port
             c.saveState()
             c.setFont("Helvetica-Bold", 12)
             c.drawString(50, y_position, "Vulnérabilités pour le service: {} (Port {})".format(service_name, port_number))
             c.restoreState()
             c.drawString(50, y_position - 20, "-" * 70)
 
-            # Récupérer les vulnérabilités pour ce service
-            vulnerabilities = vulners_api.find(service_name, limit=3)  # Limitez à 3 vulnérabilités pour chaque service
+            # Récupérer les vuln
+            vulnerabilities = vulners_api.find(service_name, limit=3)  # Limitez à 3 vuln
 
-            # Afficher les vulnérabilités
             y_position -= 40  # Ajustement de l'espacement
             for vulnerability in vulnerabilities:
                 c.drawString(50, y_position, "CVE ID: {}".format(vulnerability.get("id")))
@@ -84,4 +80,3 @@ def generate_pdf_vulnerability_report(json_file, pdf_file):
     except Exception as e:
         print("Une erreur s'est produite lors de la génération du rapport des vulnérabilités:", e)
 
-# Appel de la fonction pour générer le rapport des vulnérabilités au format PDF
